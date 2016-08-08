@@ -1,0 +1,27 @@
+﻿@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/modernizer")
+@Styles.Render("~/content/css")
+@using (var navbar = Html.Bootstrap().Navbar().SetPosition(NavbarPosition.FixedTop).AddCss("my_navbar-default").Begin())
+{
+    using (var navbarheader = navbar.NavbarHeader().Begin()) {
+
+        @navbarheader.Brand("THE CITIZENS FOUNDATION").AddCss("navbar-brand")
+        
+
+    }
+
+    using (var navbarcollapse = navbar.NavbarCollapse().Begin()) {
+
+        @navbarcollapse.NavbarLink(controllerName: "Home", actionName: "Index", text: "HOME")
+        @navbarcollapse.NavbarLink(controllerName: "Home", actionName: "About", text: "ABOUT US")
+        @navbarcollapse.NavbarLink(controllerName: "Home", actionName: "Contact", text: "CONTACT US")
+    }
+}
+
+
+@using (var container = Html.Bootstrap().Container().SetFluid().Begin()) {
+
+@RenderBody()
+
+}
