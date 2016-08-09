@@ -8,5 +8,9 @@ namespace TCFPROJECT.Controllers
 {
     public class RandomController : Controller
     {
+        public ActionResult Index() {
+            return View();
+        }
+
     }
 }
