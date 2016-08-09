@@ -9,6 +9,7 @@ namespace TCFPROJECT.Controllers
     public class RandomController : Controller
     {
         public ActionResult Index() {
+            ViewBag.Message = "This is some random shit";
             return View();
         }
 
