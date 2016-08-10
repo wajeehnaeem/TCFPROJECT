@@ -241,5 +241,8 @@ ModelManifest.xml
 # Paket dependency manager
 .paket/paket.exe
 
+#Config files
+Web.config
+*.config
 # FAKE - F# Make
 .fake/
