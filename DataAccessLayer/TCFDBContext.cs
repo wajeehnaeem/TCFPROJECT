@@ -7,7 +7,7 @@ namespace DataAccessLayer
     public partial class TCFDBContext : IdentityDbContext<User>
     {
         public TCFDBContext()
-            : base("data source=localhost;initial catalog=TCFPROJECT;persist security info=False;user id=sa;password=Undertaker95;MultipleActiveResultSets=True;App=EntityFramework")
+            : base()
         {
 
         }
