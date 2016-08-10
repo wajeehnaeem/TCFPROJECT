@@ -11,7 +11,9 @@ namespace TCFPROJECT.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            Session["cstring"] = CustomHelper.GetConstructor;
             return View();
         }
+
     }
 }
