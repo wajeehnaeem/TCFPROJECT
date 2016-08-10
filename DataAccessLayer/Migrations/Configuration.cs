@@ -1,18 +1,18 @@
-namespace TCFPROJECT.Migrations
+namespace DataAccessLayer.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<TCFPROJECT.Models.TCFDBContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<DataAccessLayer.TCFDBContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(TCFPROJECT.Models.TCFDBContext context)
+        protected override void Seed(DataAccessLayer.TCFDBContext context)
         {
             //  This method will be called after migrating to the latest version.
 

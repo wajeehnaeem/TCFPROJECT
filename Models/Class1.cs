@@ -1,35 +1,20 @@
-﻿using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.ComponentModel.DataAnnotations;
-using System.Data.Entity;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TCFPROJECT.Models
+namespace Entity
 {
-    
-    public class UserLogin : IdentityUserLogin
+    public partial class User : IdentityUser
     {
-       
-    }
-    public class UserClaim : IdentityUserClaim { }
-    public class Role : IdentityRole {
-        //[Key]
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        //public int Id { get; set; }
-    }
-    public class User : IdentityUser
-    {
-        
+
         public virtual ICollection<Level> Levels { get; set; }
-       
+        [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
-        
+        [DataType(DataType.Date)]
         public DateTime DateOfJoining { get; set; }
-       
+        [RegularExpression(@"\d{5}-\d{7}-\d")]
         public string CNIC { get; set; }
         public string ParentCNIC { get; set; }
         public string EmergencyPhoneNumber { get; set; }
@@ -37,7 +22,7 @@ namespace TCFPROJECT.Models
         public virtual ICollection<Answer> Answers { get; set; }
         public virtual ICollection<Designation> Designations { get; set; }
     }//done
-    public class Designation
+    public partial class Designation
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
@@ -45,7 +30,7 @@ namespace TCFPROJECT.Models
         public virtual ICollection<User> Users { get; set; }
         public virtual ICollection<QuestionClaim> Questions { get; set; }
     }//done
-    public class QuestionClaim
+    public partial class QuestionClaim
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
@@ -56,18 +41,18 @@ namespace TCFPROJECT.Models
         public virtual ICollection<Answer> Answers { get; set; }
         public Designation Designation { get; set; }
     }//done
-    public class Level
+    public partial class Level
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Key]
-        public int LevelId { get; set; }
+
+        public int Id { get; set; }
         public string Name { get; set; }
         public virtual ICollection<User> Users { get; set; }
         public virtual ICollection<QuestionClaim> QuestionClaims { get; set; }
         public virtual ICollection<University> Universitys { get; set; }
 
     }//done
-    public class Answer
+    public partial class Answer
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
@@ -76,14 +61,14 @@ namespace TCFPROJECT.Models
         public User User { get; set; }
         public string AnswerValue { get; set; }
     }//done
-    public class City
+    public partial class City
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Name { get; set; }
         public virtual ICollection<Cluster> Clusters { get; set; }
     }//done
-    public class School
+    public partial class School
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
@@ -93,7 +78,7 @@ namespace TCFPROJECT.Models
         public Cluster Cluster { get; set; }
         public virtual ICollection<Class> Classes { get; set; }
     }//done
-    public class Cluster
+    public partial class Cluster
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
@@ -101,7 +86,7 @@ namespace TCFPROJECT.Models
         public City City { get; set; }
         public virtual ICollection<School> Schools { get; set; }
     }//done
-    public class Session
+    public partial class Session
     {
         public string YearFrom { set; get; }
         public string YearTo { get; set; }
@@ -111,7 +96,7 @@ namespace TCFPROJECT.Models
         public virtual ICollection<User> Users { get; set; }
         public Class Class { get; set; }
     }//done
-    public class Class
+    public partial class Class
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
@@ -119,7 +104,7 @@ namespace TCFPROJECT.Models
         public School School { get; set; }
         public virtual ICollection<Session> Sessions { get; set; }
     }//done
-    public class University
+    public partial class University
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
@@ -134,3 +119,4 @@ namespace TCFPROJECT.Models
 
 
 }
+
