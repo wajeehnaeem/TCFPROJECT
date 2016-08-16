@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<span>@DateTime.Now.ToLongDateString()</span
+
+@{
+    var style = "morningTheme";
+    if (DateTime.Now.Hour > 12) {
+        style = "eveningTheme";
+    }
+}
